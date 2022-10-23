@@ -2,7 +2,7 @@
 
 A [Blender 3D](https://www.blender.org) Addon that helps you create accurate models for 3D Printing.
 
-- [Setup](#setup])
+- [Setup](#setup)
 - [Development](#development)
 - [License](#license)
 

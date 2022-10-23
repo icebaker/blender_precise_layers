@@ -11,7 +11,7 @@ else:
 
 
 class CubifyOperator(bpy.types.Operator):
-    '''Resize the object to a cube composed of precise layers.'''
+    '''Resize the object to a cube composed of precise layers'''
     bl_idname = 'object.cubify_operator'
     bl_label = 'Cubify Operator'
 

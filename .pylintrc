@@ -1,0 +1,3 @@
+[MESSAGES CONTROL]
+disable=C0114,C0115,C0116,C0103,R0801
+good-names=x,y,z,mm,cm

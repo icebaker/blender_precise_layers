@@ -2,7 +2,7 @@ import importlib
 
 import bpy  # pylint: disable=E0401
 
-if __name__.startswith("blender_precise_layers"):
+if __name__.startswith('blender_precise_layers'):
     from . import logic
 else:
     import logic  # pylint: disable=E0401
@@ -11,9 +11,9 @@ else:
 
 
 class CubifyOperator(bpy.types.Operator):
-    """Resize the object to a cube composed of precise layers."""
-    bl_idname = "object.cubify_operator"
-    bl_label = "Cubify Operator"
+    '''Resize the object to a cube composed of precise layers.'''
+    bl_idname = 'object.cubify_operator'
+    bl_label = 'Cubify Operator'
 
     @classmethod
     def poll(cls, context):
@@ -32,9 +32,9 @@ class CubifyOperator(bpy.types.Operator):
 
 
 class FakeOperator(bpy.types.Operator):
-    """Active current object"""
-    bl_idname = "object.fake_operator"
-    bl_label = "Fake Object Operator"
+    '''Active current object'''
+    bl_idname = 'object.fake_operator'
+    bl_label = 'Fake Object Operator'
 
     @classmethod
     def poll(cls, _context):
@@ -42,3 +42,8 @@ class FakeOperator(bpy.types.Operator):
 
     def execute(self, _context):
         return {'FINISHED'}
+
+
+registrable = (
+    CubifyOperator,
+    FakeOperator)

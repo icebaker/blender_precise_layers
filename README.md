@@ -29,11 +29,11 @@ Developing inside Blender:
 Got to the _Scripting_ workspace inside Blender, create a new _text data-block_, paste the following code, and press _Run Script_:
 
 ```python
-init_path = "/home/icebaker/blender_precise_layers/__init__.py"
+init_path = '/home/icebaker/blender_precise_layers/__init__.py'
 
 exec(
     compile(open(init_path).read(), init_path, 'exec'),
-    {"init_path": init_path}
+    {'init_path': init_path}
 )
 ```
 

@@ -3,7 +3,7 @@ import math
 import dataclasses
 import bpy  # pylint: disable=E0401
 
-if __name__.startswith("blender_precise_layers"):
+if __name__.startswith('blender_precise_layers'):
     from . import logic
 else:
     import logic  # pylint: disable=E0401
@@ -44,50 +44,50 @@ class Controller:
         z_multiplier = bpy.context.scene.model.nozzle_diameter
 
         match bpy.context.scene.model.vertical_axis:
-            case "X":
+            case 'X':
                 x_multiplier = bpy.context.scene.model.layer_height
-            case "Y":
+            case 'Y':
                 y_multiplier = bpy.context.scene.model.layer_height
-            case "Z":
+            case 'Z':
                 z_multiplier = bpy.context.scene.model.layer_height
 
         match attribute:
-            case "layers_x":
+            case 'layers_x':
                 self.blender_object.dimensions.x = (
                     bpy.context.scene.model.layers_x * x_multiplier)
-            case "layers_y":
+            case 'layers_y':
                 self.blender_object.dimensions.y = (
                     bpy.context.scene.model.layers_y * y_multiplier)
-            case "layers_z":
+            case 'layers_z':
                 self.blender_object.dimensions.z = (
                     bpy.context.scene.model.layers_z * z_multiplier)
-            case "mm_x":
+            case 'mm_x':
                 self.blender_object.dimensions.x = bpy.context.scene.model.mm_x
-            case "mm_y":
+            case 'mm_y':
                 self.blender_object.dimensions.y = bpy.context.scene.model.mm_y
-            case "mm_z":
+            case 'mm_z':
                 self.blender_object.dimensions.z = bpy.context.scene.model.mm_z
-            case "cm_x":
+            case 'cm_x':
                 self.blender_object.dimensions.x = (
                     bpy.context.scene.model.cm_x * 10.0
                 )
-            case "cm_y":
+            case 'cm_y':
                 self.blender_object.dimensions.y = (
                     bpy.context.scene.model.cm_y * 10.0
                 )
-            case "cm_z":
+            case 'cm_z':
                 self.blender_object.dimensions.z = (
                     bpy.context.scene.model.cm_z * 10.0
                 )
-            case "vertical_axis":
+            case 'vertical_axis':
                 if (
                     bpy.context.scene.model.vertical_axis is not None
-                    and bpy.context.scene.model.vertical_axis != "Z"
+                    and bpy.context.scene.model.vertical_axis != 'Z'
                 ):
-                    self.blender_object["vertical_axis"] = (
+                    self.blender_object['vertical_axis'] = (
                         bpy.context.scene.model.vertical_axis)
                 else:
-                    del self.blender_object["vertical_axis"]
+                    del self.blender_object['vertical_axis']
 
     def update_model(self):
         self.locked = True
@@ -163,21 +163,21 @@ class Controller:
         self.state.cm.y = self.state.mm.y / 10.0
         self.state.cm.z = self.state.mm.z / 10.0
 
-        if "vertical_axis" in self.blender_object:
-            self.state.vertical_axis = self.blender_object["vertical_axis"]
+        if 'vertical_axis' in self.blender_object:
+            self.state.vertical_axis = self.blender_object['vertical_axis']
         else:
-            self.state.vertical_axis = "Z"
+            self.state.vertical_axis = 'Z'
 
         x_divider = bpy.context.scene.model.nozzle_diameter
         y_divider = bpy.context.scene.model.nozzle_diameter
         z_divider = bpy.context.scene.model.nozzle_diameter
 
         match self.state.vertical_axis:
-            case "X":
+            case 'X':
                 x_divider = bpy.context.scene.model.layer_height
-            case "Y":
+            case 'Y':
                 y_divider = bpy.context.scene.model.layer_height
-            case "Z":
+            case 'Z':
                 z_divider = bpy.context.scene.model.layer_height
 
         self.state.layers.x = self.state.mm.x / x_divider

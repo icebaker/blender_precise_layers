@@ -3,7 +3,7 @@ import bpy  # pylint: disable=E0401
 from bpy.app.handlers import persistent  # pylint: disable=E0401
 
 
-if __name__.startswith("blender_precise_layers"):
+if __name__.startswith('blender_precise_layers'):
     from . import operators
     from . import controllers
     from . import models
@@ -32,12 +32,17 @@ def register():
     importlib.reload(models)
     importlib.reload(views)
 
-    bpy.utils.register_class(operators.FakeOperator)
-    bpy.utils.register_class(operators.CubifyOperator)
+    for operator in operators.registrable:
+        bpy.utils.register_class(operator)
+
     bpy.utils.register_class(models.Model)
     bpy.types.Scene.model = bpy.props.PointerProperty(type=models.Model)
+
     bpy.types.Scene.controller = controllers.Controller()
-    bpy.utils.register_class(views.View)
+
+    for view in views.registrable:
+        bpy.utils.register_class(view)
+
     bpy.app.handlers.depsgraph_update_post.append(depsgraph_updated)
 
 
@@ -48,12 +53,15 @@ def unregister():
     del bpy.types.Scene.controller
 
     bpy.utils.unregister_class(models.Model)
-    bpy.utils.unregister_class(views.View)
-    bpy.utils.unregister_class(operators.FakeOperator)
-    bpy.utils.unregister_class(operators.CubifyOperator)
+
+    for view in views.registrable:
+        bpy.utils.unregister_class(view)
+
+    for operator in operators.registrable:
+        bpy.utils.unregister_class(operator)
 
 
 def boot():
-    if hasattr(bpy.types.Scene, "controller"):
+    if hasattr(bpy.types.Scene, 'controller'):
         unregister()
     register()

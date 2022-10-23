@@ -12,65 +12,65 @@ class Model(bpy.types.PropertyGroup):  # pylint: disable=R0902
         default=0.1,
         precision=2, step=1,
         update=lambda self, context: model_updated(
-            self, context, "print_precision"))
+            self, context, 'print_precision'))
 
     nozzle_diameter: bpy.props.FloatProperty(
         default=0.4,
         precision=2, step=1,
         update=lambda self, context: model_updated(
-            self, context, "nozzle_diameter"))
+            self, context, 'nozzle_diameter'))
 
     layer_height: bpy.props.FloatProperty(
         default=0.20,
         precision=2, step=1,
         update=lambda self, context: model_updated(
-            self, context, "layer_height"))
+            self, context, 'layer_height'))
 
     vertical_axis: bpy.props.EnumProperty(
-        name="",
-        description="Vertical Axis",
-        items=[("X", "X", "X"), ("Y", "Y", "Y"), ("Z", "Z", "Z")],
+        name='',
+        description='Vertical Axis',
+        items=[('X', 'X', 'X'), ('Y', 'Y', 'Y'), ('Z', 'Z', 'Z')],
         update=lambda self, context: model_updated(
-            self, context, "vertical_axis"))
+            self, context, 'vertical_axis'))
 
     layers_x: bpy.props.FloatProperty(
         default=0.20,
         precision=2, step=1,
         update=lambda self, context: model_updated(
-            self, context, "layers_x", "x"))
+            self, context, 'layers_x', 'x'))
 
     layers_y: bpy.props.FloatProperty(
         default=0.20,
         precision=2, step=1,
         update=lambda self, context: model_updated(
-            self, context, "layers_y", "y"))
+            self, context, 'layers_y', 'y'))
 
     layers_z: bpy.props.FloatProperty(
         default=0.20,
         precision=2, step=1,
         update=lambda self, context: model_updated(
-            self, context, "layers_z", "z"))
+            self, context, 'layers_z', 'z'))
 
     mm_x: bpy.props.FloatProperty(
         precision=2, step=1,
-        update=lambda self, context: model_updated(self, context, "mm_x", "x"))
+        update=lambda self, context: model_updated(self, context, 'mm_x', 'x'))
 
     mm_y: bpy.props.FloatProperty(
         precision=2, step=1,
-        update=lambda self, context: model_updated(self, context, "mm_y", "y"))
+        update=lambda self, context: model_updated(self, context, 'mm_y', 'y'))
 
     mm_z: bpy.props.FloatProperty(
         precision=2, step=1,
-        update=lambda self, context: model_updated(self, context, "mm_z", "z"))
+        update=lambda self, context: model_updated(self, context, 'mm_z', 'z'))
 
     cm_x: bpy.props.FloatProperty(
         precision=4, step=1,
-        update=lambda self, context: model_updated(self, context, "cm_x", "x"))
+        update=lambda self, context: model_updated(self, context, 'cm_x', 'x'))
 
     cm_y: bpy.props.FloatProperty(
         precision=4, step=1,
-        update=lambda self, context: model_updated(self, context, "cm_y", "y"))
+        update=lambda self, context: model_updated(self, context, 'cm_y', 'y'))
 
     cm_z: bpy.props.FloatProperty(
         precision=4, step=1,
-        update=lambda self, context: model_updated(self, context, "cm_z"))
+        update=lambda self, context: model_updated(self, context, 'cm_z'))
